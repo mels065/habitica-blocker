@@ -5,8 +5,8 @@ Habitica have not been completed.
 
 ## How to run
 
-Add the application directory destinations to the `blocked.txt` file
+Create a `blocked.txt` file in this directory and list out the apps that should be blocked, each on a new line.
 
-Then run this in the Habitica Blocker directory
+Then run the script like so:
 
 `python script.py`
