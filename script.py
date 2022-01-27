@@ -15,7 +15,7 @@ def run_blocker():
         for app in blocked_apps:
             if app in (process.name() for process in psutil.process_iter()):
                 headers = {
-                "x-client": os.getenv("X_CLIENT"),
+                "x-client": "b7d26b77-2aa8-4f99-9876-aeaf57b46d92",
                 "x-api-user": os.getenv("X_API_USER"),
                 "x-api-key": os.getenv("X_API_KEY")
             }
