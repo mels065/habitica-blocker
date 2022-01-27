@@ -1,2 +1,6 @@
+Requirements:
 requests
 dotenv
+
+DevRequirements:
+freezegun

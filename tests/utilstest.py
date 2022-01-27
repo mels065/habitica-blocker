@@ -1,4 +1,6 @@
 import unittest
+from freezegun import freeze_time
+from datetime import date, datetime
 
 from utils.util import *
 
@@ -27,6 +29,22 @@ class TestAreAllComplete(unittest.TestCase):
         dailies = [createDailyMock(completed=True) for i in range(5)]
         dailies[2]["completed"] = False
         self.assertIs(are_all_complete(dailies), False, msg)
+
+@freeze_time("2001-01-02")
+class IsEarlyMorning(unittest.TestCase):
+    def test_not_same_day(self):
+        date_completed = datetime.today().replace(day=1)
+        self.assertFalse(is_early_morning(date_completed), "Should return false if it is not the same day")
+    
+    def test_same_day_after_six(self):
+        msg = "Should return false if same day, but after 6"
+        date_completed = datetime.today().replace(hour=6)
+        self.assertFalse(is_early_morning(date_completed), msg)
+
+    def test_same_day_before_six(self):
+        msg = "Should return true if same day and after 6"
+        date_completed = datetime.today().replace(hour=5)
+        self.assertTrue(is_early_morning(date_completed), msg)
 
 if __name__ == '__main__':
     unittest.main()
