@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 
 from utils.util import *
 
+X_CLIENT = "b7d26b77-2aa8-4f99-9876-aeaf57b46d92"
+
 load_dotenv()
 
 blocked_apps = open("blocked.txt").read().split("\n")
@@ -15,7 +17,7 @@ def run_blocker():
         for app in blocked_apps:
             if app in (process.name() for process in psutil.process_iter()):
                 headers = {
-                "x-client": "b7d26b77-2aa8-4f99-9876-aeaf57b46d92",
+                "x-client": X_CLIENT,
                 "x-api-user": os.getenv("X_API_USER"),
                 "x-api-key": os.getenv("X_API_KEY")
             }
