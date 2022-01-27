@@ -1,2 +1,3 @@
 .env
 blocked.txt
+**/__pycache__
